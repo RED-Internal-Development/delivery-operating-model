@@ -34,15 +34,15 @@ flowchart TB
     AGENTS -.-> SPEC
     FUND -.-> TEAM
 
-    style AI fill:#40916c,color:#fff
-    style BN fill:#9b2226,color:#fff
-    style PO fill:#2d6a4f,color:#fff
-    style SPEC fill:#2d6a4f,color:#fff
-    style TEAM fill:#2d6a4f,color:#fff
-    style FLOW fill:#2d6a4f,color:#fff
-    style PLAT fill:#1b4332,color:#fff
-    style AGENTS fill:#1b4332,color:#fff
-    style FUND fill:#1b4332,color:#fff
+    style AI fill:#4C4C4C,color:#fff
+    style BN fill:#F50537,color:#fff
+    style PO fill:#333333,color:#fff
+    style SPEC fill:#333333,color:#fff
+    style TEAM fill:#333333,color:#fff
+    style FLOW fill:#333333,color:#fff
+    style PLAT fill:#1A1A1A,color:#fff
+    style AGENTS fill:#1A1A1A,color:#fff
+    style FUND fill:#1A1A1A,color:#fff
 ```
 
 ---
@@ -73,11 +73,11 @@ flowchart LR
     B --> R["Run<br/><i>whole team owns production</i>"]
     R -. "outcome data" .-> D
 
-    style D fill:#40916c,color:#fff
-    style S fill:#2d6a4f,color:#fff
-    style RB fill:#1b4332,color:#fff
-    style B fill:#2d6a4f,color:#fff
-    style R fill:#40916c,color:#fff
+    style D fill:#4C4C4C,color:#fff
+    style S fill:#333333,color:#fff
+    style RB fill:#1A1A1A,color:#fff
+    style B fill:#333333,color:#fff
+    style R fill:#4C4C4C,color:#fff
 ```
 
 The center of gravity sits **upstream**: discovery and specification are the new constraint, so that is where the team's effort — and the budget — concentrate.

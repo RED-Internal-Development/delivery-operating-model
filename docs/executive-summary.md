@@ -25,11 +25,11 @@ flowchart LR
 
     UP -.->|"when starved"| STALL["Team idles on<br/>upstream blockers"]
 
-    style OBJ fill:#40916c,color:#fff
-    style UP fill:#9b2226,color:#fff
-    style BUILD fill:#2d6a4f,color:#fff
-    style RUN fill:#40916c,color:#fff
-    style STALL fill:#081c15,color:#fff
+    style OBJ fill:#4C4C4C,color:#fff
+    style UP fill:#F50537,color:#fff
+    style BUILD fill:#333333,color:#fff
+    style RUN fill:#4C4C4C,color:#fff
+    style STALL fill:#000000,color:#fff
 ```
 
 Teams are already **durable and topic-aligned**, fed new objectives each quarter. That part of the structure is right. What changes is that the **upstream zone becomes the job to manage** — because when build is fast and the team is lean, any gap upstream shows up immediately as idle capacity or wrong output.
@@ -44,12 +44,12 @@ flowchart LR
     E["<b>Author code</b><br/>engineer writes every line"] --> F["<b>Orchestrate & own systems</b><br/>engineer directs & reviews agents"]
     G["<b>Batch ceremonies</b><br/>PI planning & sprints"] --> H["<b>Continuous flow</b><br/>WIP limits + ready buffer"]
 
-    style C fill:#9b2226,color:#fff
-    style E fill:#9b2226,color:#fff
-    style G fill:#9b2226,color:#fff
-    style D fill:#2d6a4f,color:#fff
-    style F fill:#2d6a4f,color:#fff
-    style H fill:#2d6a4f,color:#fff
+    style C fill:#F50537,color:#fff
+    style E fill:#F50537,color:#fff
+    style G fill:#F50537,color:#fff
+    style D fill:#333333,color:#fff
+    style F fill:#333333,color:#fff
+    style H fill:#333333,color:#fff
 ```
 
 | Dimension | From | To |
@@ -90,11 +90,11 @@ flowchart LR
     C --> D["Review flow &<br/>lead-time data"]
     D --> E["Scale the model<br/>team by team"]
 
-    style A fill:#40916c,color:#fff
-    style B fill:#2d6a4f,color:#fff
-    style C fill:#1b4332,color:#fff
-    style D fill:#2d6a4f,color:#fff
-    style E fill:#081c15,color:#fff
+    style A fill:#4C4C4C,color:#fff
+    style B fill:#333333,color:#fff
+    style C fill:#1A1A1A,color:#fff
+    style D fill:#333333,color:#fff
+    style E fill:#000000,color:#fff
 ```
 
 The single most revealing number to bring back: **flow efficiency** — the share of lead time that is active work versus waiting. It is typically **15–25%**, meaning most of a team's time is spent blocked upstream. That is where the new model earns its keep.
