@@ -24,6 +24,7 @@ The answer is almost never "more engineering capacity." It is a set of **upstrea
   - [7. The PO as a Single Point of Contention](#7-the-po-as-a-single-point-of-contention)
 - [Which Blockers Dominate](#which-blockers-dominate)
 - [How to See Them](#how-to-see-them)
+- [How the PO Self-Validates Requirements](#how-the-po-self-validates-requirements)
 - [What the PO's Job Becomes](#what-the-pos-job-becomes)
 
 ---
@@ -47,10 +48,10 @@ flowchart LR
     end
     BEFORE --> NOW
 
-    style b2 fill:#40916c,color:#fff
-    style b3 fill:#2d6a4f,color:#fff
-    style n2 fill:#9b2226,color:#fff
-    style n3 fill:#9b2226,color:#fff
+    style b2 fill:#4C4C4C,color:#fff
+    style b3 fill:#333333,color:#fff
+    style n2 fill:#F50537,color:#fff
+    style n3 fill:#F50537,color:#fff
 ```
 
 > The blockers were always there. Fast, lean, agentic delivery did not create them — it **removed the thing that was hiding them.** Illustrating the new model means making these upstream blockers visible and owning them deliberately.
@@ -73,13 +74,13 @@ flowchart LR
     end
     RB --> BUILD["Build<br/><i>fast, agent-assisted</i>"]
 
-    style OBJ fill:#1b4332,color:#fff
-    style DISC fill:#2d6a4f,color:#fff
-    style DEC fill:#2d6a4f,color:#fff
-    style SPEC fill:#2d6a4f,color:#fff
-    style DEP fill:#2d6a4f,color:#fff
-    style RB fill:#40916c,color:#fff
-    style BUILD fill:#081c15,color:#fff
+    style OBJ fill:#1A1A1A,color:#fff
+    style DISC fill:#333333,color:#fff
+    style DEC fill:#333333,color:#fff
+    style SPEC fill:#333333,color:#fff
+    style DEP fill:#333333,color:#fff
+    style RB fill:#4C4C4C,color:#fff
+    style BUILD fill:#000000,color:#fff
 ```
 
 A blocker at **any** stage in this zone starves the fast build step downstream. The PO's real job is to keep this whole zone flowing — the [requirements supply chain](future-delivery-operating-model.md).
@@ -174,10 +175,10 @@ flowchart TB
     T --> B["<b>Fragmented context</b><br/>agents starved of fuel"]
     T --> C["<b>Ambiguous requirements</b><br/>stalls or wrong output"]
 
-    style T fill:#081c15,color:#fff
-    style A fill:#9b2226,color:#fff
-    style B fill:#9b2226,color:#fff
-    style C fill:#9b2226,color:#fff
+    style T fill:#000000,color:#fff
+    style A fill:#F50537,color:#fff
+    style B fill:#F50537,color:#fff
+    style C fill:#F50537,color:#fff
 ```
 
 Start here. The other four matter, but decisions, context, and clarity are where the biggest, fastest wins are — and they are entirely upstream of the engineering the AI already accelerated.
@@ -199,6 +200,41 @@ You cannot manage what you cannot see. Each blocker leaves a measurable trace:
 | PO contention | **Requirement-starved time**; queue of questions waiting on the PO |
 
 The keystone metric across all of them is **requirement-starved time** — how long the fast team sits without validated, build-ready work. If that number is anything but near-zero, one or more of these blockers is active.
+
+---
+
+## How the PO Self-Validates Requirements
+
+Blockers **#2 (ambiguous requirements)** and **#7 (PO as a single point of contention)** share one root cause: the PO's only way to confirm a requirement is *right* is to ask a developer. Every "is this correct?" becomes a human round-trip that stalls a fast team and turns the PO into a relay. The fix is to replace that round-trip with **self-serve validation loops** — so *right* is confirmed by tooling and evidence, not by an engineer's availability.
+
+```mermaid
+flowchart LR
+    DRAFT["PO drafts a<br/>requirement"] --> L1["1. Readiness linter<br/><i>scores vs Definition of Ready</i>"]
+    L1 --> L2["2. Edge-case &<br/>consistency agents<br/><i>surface gaps & conflicts</i>"]
+    L2 --> L3["3. Knowledge fabric<br/><i>pull rules, schemas, decisions</i>"]
+    L3 --> L4["4. Problem already<br/>validated in discovery"]
+    L4 --> READY[(Ready buffer<br/>build-ready)]
+    L1 -. "fails: fix & re-run" .-> DRAFT
+
+    style DRAFT fill:#4C4C4C,color:#fff
+    style L1 fill:#F50537,color:#fff
+    style L2 fill:#333333,color:#fff
+    style L3 fill:#333333,color:#fff
+    style L4 fill:#333333,color:#fff
+    style READY fill:#1A1A1A,color:#fff
+```
+
+Five loops let the PO answer "is this right?" without asking development:
+
+1. **Make "right" a testable contract.** A requirement isn't done when it *reads* well — it's done when it carries **executable acceptance criteria (evals)** a human *or an agent* can check automatically. Correctness becomes something you *run*, not something you *ask*. Any clarifying question raised at build time is treated as a **defect in the spec** and folded back into the Definition of Ready, so it is never asked twice.
+2. **Lint readiness before a developer ever sees it.** The **readiness linter** scores each draft against the Definition of Ready and blocks incomplete specs. This is the highest-leverage loop: the *machine*, not an engineer, tells the PO the spec is thin.
+3. **Pressure-test with agents first.** The **edge-case generator** enumerates corner cases the PO would otherwise discover only through a dev question; the **consistency checker** flags contradictions with existing behaviour. The PO validates against agents and escalates only the genuinely novel calls.
+4. **Make context self-serve.** Most "is this right?" questions are really "what's the existing rule / schema / prior decision here?" A maintained, agent-consumable **knowledge fabric** lets the PO and agents pull that answer directly instead of routing it through the one person who remembers.
+5. **Validate the problem upstream.** Continuous discovery one horizon ahead — plus cheap *build-to-learn* throwaway prototypes — means a problem is validated *before* it becomes a spec, removing the largest class of "is this right?" (the ones where nobody actually knows yet).
+
+Where a judgement call genuinely remains, the fastest answer is the one that never leaves the team: pre-agreed **decision rights** plus async, pre-framed escalations (see [Governance & Cadence](governance-and-cadence.md#decision-rights)) mean the PO isn't blocked waiting on a developer's opinion for reversible calls.
+
+> **In one line:** the PO stops asking "is this right?" by making *right* mean *"passes the readiness linter, carries evals, draws on curated context, and solves a validated problem"* — so correctness is verified by tooling and evidence, not by a developer's time.
 
 ---
 
