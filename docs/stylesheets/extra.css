@@ -45,13 +45,20 @@
 [data-md-color-scheme="slate"] {
   --md-mermaid-node-bg-color: #333333; /* default node fill */
   --md-mermaid-node-fg-color: #ffffff; /* node text + border */
-  --md-mermaid-label-fg-color: #1a1a1a; /* edge/flow label text */
+  /* Node label text is colored by Mermaid's OWN rule
+     `#__mermaid_N .nodeLabel p { color: var(--md-mermaid-label-fg-color) }`.
+     That ID selector outranks any class-based override we can write, so the
+     ONLY reliable way to make node text white is to make this variable white
+     in BOTH themes. Node fills are always dark charcoal or Audi red, so white
+     is always correct. Edge labels and subgraph/cluster titles share this
+     variable but are re-colored via !important overrides below (which DO beat
+     Mermaid's non-important ID rule). */
+  --md-mermaid-label-fg-color: #ffffff; /* node/edge label text (white) */
   --md-mermaid-label-bg-color: #ffffff; /* edge label chip */
   --md-mermaid-edge-color: #666666; /* arrows */
 }
 
 [data-md-color-scheme="slate"] {
-  --md-mermaid-label-fg-color: #f2f2f2;
   --md-mermaid-label-bg-color: #2b2b2b;
   --md-mermaid-edge-color: #999999;
 }
