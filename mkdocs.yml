@@ -31,6 +31,8 @@ theme:
 nav:
   - Home: index.md
   - The Operating Model: future-delivery-operating-model.md
+  - Team Shape & Roles: team-shape-and-roles.md
+  - Funding & Operating Budget: funding-and-operating-budget.md
   - PO Spec Template: po-spec-template.md
 
 markdown_extensions:
