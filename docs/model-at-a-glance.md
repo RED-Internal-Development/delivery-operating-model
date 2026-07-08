@@ -52,6 +52,7 @@ flowchart TB
 | Piece | Solves | Depends on | Detailed in |
 |---|---|---|---|
 | **Requirements supply chain** | Team starvation as build speeds up | Executable specs + PO agents | [Operating Model](future-delivery-operating-model.md) |
+| **Upstream blockers cleared** | The real waits that starve a fast team | Decisions, context, clarity owned upstream | [Upstream Blockers](upstream-blockers.md) |
 | **Executable specs** | Ambiguity that stalls humans and agents | Definition of Ready | [PO Spec Template](po-spec-template.md) |
 | **Durable Outcome Teams** | Context tax of re-forming project teams | Outcome funding | [Team Shape & Roles](team-shape-and-roles.md) |
 | **Continuous flow** | Batch delay from sprints / PI planning | WIP limits + ready buffer | [Governance & Cadence](governance-and-cadence.md) |
@@ -87,6 +88,7 @@ The center of gravity sits **upstream**: discovery and specification are the new
 
 - **Two-minute leadership version** → [Executive Summary](executive-summary.md)
 - **The full argument** → [The Operating Model](future-delivery-operating-model.md)
+- **What actually blocks us upstream** → [Upstream Blockers](upstream-blockers.md)
 - **How teams are shaped** → [Team Shape & Roles](team-shape-and-roles.md)
 - **How work is governed** → [Governance & Cadence](governance-and-cadence.md)
 - **How it is funded** → [Funding & Operating Budget](funding-and-operating-budget.md)
