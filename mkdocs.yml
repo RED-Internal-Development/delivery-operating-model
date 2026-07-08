@@ -1,0 +1,56 @@
+site_name: Delivery Operating Model
+site_description: A future operating model for product and delivery teams reshaping around AI-accelerated development.
+# When deployed to GitHub Pages, update this to https://<user>.github.io/<repo>/
+# site_url: https://red-internal-development.github.io/delivery-operating-model/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - toc.follow
+
+nav:
+  - Home: index.md
+  - The Operating Model: future-delivery-operating-model.md
+  - PO Spec Template: po-spec-template.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/RED-Internal-Development/delivery-operating-model
