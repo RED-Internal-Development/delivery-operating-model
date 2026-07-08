@@ -1,0 +1,87 @@
+/* Custom styles for the Delivery Operating Model site */
+
+/* ---------------------------------------------------------------------------
+   Mermaid readability
+   ---------------------------------------------------------------------------
+   Our diagrams use a dark-green palette with inline `color:#fff`. Mermaid does
+   not reliably apply that inline text color to HTML node labels, so in LIGHT
+   theme the label text falls back to dark and becomes unreadable on the dark
+   green fills. These rules force correct contrast in both themes and give
+   subgraphs and edge labels a clean, readable look on a light background.
+--------------------------------------------------------------------------- */
+
+/* Node label text: always white — every styled node in these diagrams uses a
+   dark green or dark red fill, so white text is correct in both themes. */
+.mermaid .node .nodeLabel,
+.mermaid .node .nodeLabel p,
+.mermaid .node span,
+.mermaid .node foreignObject div {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* Keep node borders defined so shapes read clearly on a light page. */
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node path,
+.mermaid .node circle,
+.mermaid .node ellipse {
+  stroke: #1b4332 !important;
+  stroke-width: 1.5px !important;
+}
+
+/* --- Light theme specifics --- */
+
+/* Subgraph containers: soft green tint with a defined border so groups stand
+   apart from the white page instead of washing out. */
+[data-md-color-scheme="default"] .mermaid .cluster rect {
+  fill: #eef6f0 !important;
+  stroke: #40916c !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Subgraph titles: dark green, readable on the light tint. */
+[data-md-color-scheme="default"] .mermaid .cluster .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cluster text,
+[data-md-color-scheme="default"] .mermaid .cluster span {
+  color: #1b4332 !important;
+  fill: #1b4332 !important;
+  font-weight: 600;
+}
+
+/* Edge (arrow) labels: dark text on a solid white chip so they never blend
+   into node fills or arrows. */
+[data-md-color-scheme="default"] .mermaid .edgeLabel,
+[data-md-color-scheme="default"] .mermaid .edgeLabel p,
+[data-md-color-scheme="default"] .mermaid .edgeLabel span {
+  color: #1b4332 !important;
+  background-color: #ffffff !important;
+}
+
+/* Arrow lines: a mid-green that reads clearly on white. */
+[data-md-color-scheme="default"] .mermaid .edgePath .path,
+[data-md-color-scheme="default"] .mermaid .flowchart-link {
+  stroke: #2d6a4f !important;
+}
+
+[data-md-color-scheme="default"] .mermaid marker path {
+  fill: #2d6a4f !important;
+  stroke: #2d6a4f !important;
+}
+
+/* --- Dark theme specifics --- */
+
+/* Give subgraphs a subtle contrast in dark theme too. */
+[data-md-color-scheme="slate"] .mermaid .cluster rect {
+  fill: rgba(64, 145, 108, 0.12) !important;
+  stroke: #40916c !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-md-color-scheme="slate"] .mermaid .cluster .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cluster text,
+[data-md-color-scheme="slate"] .mermaid .cluster span {
+  color: #d8f3dc !important;
+  fill: #d8f3dc !important;
+  font-weight: 600;
+}

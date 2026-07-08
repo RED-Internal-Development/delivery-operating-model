@@ -28,6 +28,9 @@ theme:
     - content.code.copy
     - toc.follow
 
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
   - Executive Summary: executive-summary.md
