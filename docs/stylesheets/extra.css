@@ -43,11 +43,11 @@
 
 [data-md-color-scheme="default"],
 [data-md-color-scheme="slate"] {
-  --md-mermaid-node-bg-color: #333333;   /* default node fill */
-  --md-mermaid-node-fg-color: #ffffff;   /* node text + border */
-  --md-mermaid-label-fg-color: #1a1a1a;  /* edge/flow label text */
-  --md-mermaid-label-bg-color: #ffffff;  /* edge label chip */
-  --md-mermaid-edge-color: #666666;      /* arrows */
+  --md-mermaid-node-bg-color: #333333; /* default node fill */
+  --md-mermaid-node-fg-color: #ffffff; /* node text + border */
+  --md-mermaid-label-fg-color: #1a1a1a; /* edge/flow label text */
+  --md-mermaid-label-bg-color: #ffffff; /* edge label chip */
+  --md-mermaid-edge-color: #666666; /* arrows */
 }
 
 [data-md-color-scheme="slate"] {
@@ -65,15 +65,24 @@
    dark charcoal or Audi-red fill, so we force white label text via `fill`.
 --------------------------------------------------------------------------- */
 
-/* SVG label text on nodes: always white. */
+/* Node label text: always white (node fills are dark charcoal or Audi red).
+   IMPORTANT: Mermaid colors the actual text on the <p>/<span> INSIDE
+   .nodeLabel via `.nodeLabel p { color: var(--md-mermaid-label-fg-color) }`.
+   That variable is shared with edge labels (which must stay dark on light),
+   so we can't fix this via the variable. We must target the node label text
+   directly. These selectors are scoped to .nodeLabel (nodes) and do NOT
+   require a .node ancestor, so they match every node label variant. They are
+   deliberately NOT applied to .edgeLabel. Cluster/subgraph titles are
+   re-darkened per theme further below. */
 .mermaid .node text,
 .mermaid .node tspan,
 .mermaid text.nodeLabel,
 .mermaid .nodeLabel,
-.mermaid .node .nodeLabel,
-.mermaid .node .nodeLabel p,
-.mermaid .node span,
-.mermaid .node foreignObject div {
+.mermaid .nodeLabel p,
+.mermaid .nodeLabel span,
+.mermaid .node foreignObject div,
+.mermaid .node foreignObject p,
+.mermaid .node foreignObject span {
   fill: #ffffff !important;
   color: #ffffff !important;
 }
@@ -97,9 +106,14 @@
   stroke-width: 1.5px !important;
 }
 
-/* Subgraph titles: near-black, readable on the light tint. */
+/* Subgraph titles: near-black, readable on the light tint. Must also target
+   the inner p/span to beat the broad white node-label override above. */
 [data-md-color-scheme="default"] .mermaid .cluster text,
 [data-md-color-scheme="default"] .mermaid .cluster .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cluster .nodeLabel p,
+[data-md-color-scheme="default"] .mermaid .cluster .nodeLabel span,
+[data-md-color-scheme="default"] .mermaid .cluster-label .nodeLabel,
+[data-md-color-scheme="default"] .mermaid .cluster-label p,
 [data-md-color-scheme="default"] .mermaid .cluster span {
   fill: #1a1a1a !important;
   color: #1a1a1a !important;
@@ -137,6 +151,10 @@
 }
 [data-md-color-scheme="slate"] .mermaid .cluster text,
 [data-md-color-scheme="slate"] .mermaid .cluster .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cluster .nodeLabel p,
+[data-md-color-scheme="slate"] .mermaid .cluster .nodeLabel span,
+[data-md-color-scheme="slate"] .mermaid .cluster-label .nodeLabel,
+[data-md-color-scheme="slate"] .mermaid .cluster-label p,
 [data-md-color-scheme="slate"] .mermaid .cluster span {
   fill: #f2f2f2 !important;
   color: #f2f2f2 !important;
