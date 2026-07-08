@@ -12,8 +12,11 @@ It is intentionally **codebase-agnostic** — an operating-model and process ref
 
 | Document | Purpose |
 | --- | --- |
+| [Executive Summary](executive-summary.md) | The two-minute leadership one-pager: the situation, the ask, what changes, why it pays, and what to approve. |
+| [The Model at a Glance](model-at-a-glance.md) | One page tying every piece together — the reframe, roles, flow, and funding, and how they reinforce each other. |
 | [The Operating Model](future-delivery-operating-model.md) | The full model: the bottleneck reframe, the requirements supply chain, what changes for the PO, how POs use agents/AI, the agile → continuous-flow shift, industry trends, transition path, and metrics. |
 | [Team Shape & Roles](team-shape-and-roles.md) | What changes for every role — engineers, designers, delivery lead, QA — and how durable Outcome Teams are composed. |
+| [Governance & Cadence](governance-and-cadence.md) | What replaces PI planning, sprints, and status meetings: quarterly outcome alignment, WIP limits, and the buffer-health review. |
 | [Funding & Operating Budget](funding-and-operating-budget.md) | The budget reframe: from project funding to outcome funding, the reframes for leadership, and the numbers to bring. |
 | [PO Spec Template](po-spec-template.md) | The keystone artifact: the Definition of Ready, an executable spec template usable by both humans and agents, and a worked example. |
 
@@ -34,7 +37,10 @@ The response:
 
 ## Start here
 
+- Two-minute leadership version → read [Executive Summary](executive-summary.md).
+- Want the whole picture on one page → read [The Model at a Glance](model-at-a-glance.md).
 - New to the model → read [The Operating Model](future-delivery-operating-model.md).
 - Reshaping the team → read [Team Shape & Roles](team-shape-and-roles.md).
+- Replacing sprints & PI planning → read [Governance & Cadence](governance-and-cadence.md).
 - Talking to leadership about budget → read [Funding & Operating Budget](funding-and-operating-budget.md).
 - Ready to change PO practice → adopt [PO Spec Template](po-spec-template.md).

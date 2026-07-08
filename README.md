@@ -8,17 +8,16 @@ It is intentionally kept **separate from any specific agent catalog or codebase*
 
 ---
 
-## Live site
-
-Published via GitHub Pages: **Settings → Pages → Source: GitHub Actions**. Once enabled, the `deploy.yml` workflow builds and publishes on every push to `main`.
-
----
-
 ## Contents
 
 | Document | Purpose |
 | --- | --- |
+| [docs/executive-summary.md](docs/executive-summary.md) | The two-minute leadership one-pager: the situation, the ask, what changes, why it pays, and what to approve. |
+| [docs/model-at-a-glance.md](docs/model-at-a-glance.md) | One page tying every piece together — the reframe, roles, flow, and funding, and how they reinforce each other. |
 | [docs/future-delivery-operating-model.md](docs/future-delivery-operating-model.md) | The full model: the bottleneck reframe, the requirements supply chain, what changes for the PO, how POs use agents/AI, the agile → continuous-flow shift, industry trends, transition path, and metrics. |
+| [docs/team-shape-and-roles.md](docs/team-shape-and-roles.md) | What changes for every role — engineers, designers, delivery lead, QA — and how durable Outcome Teams are composed. |
+| [docs/governance-and-cadence.md](docs/governance-and-cadence.md) | What replaces PI planning, sprints, and status meetings: quarterly outcome alignment, WIP limits, and the buffer-health review. |
+| [docs/funding-and-operating-budget.md](docs/funding-and-operating-budget.md) | The budget reframe: from project funding to outcome funding, the reframes for leadership, and the numbers to bring. |
 | [docs/po-spec-template.md](docs/po-spec-template.md) | The keystone artifact: the Definition of Ready, an executable spec template usable by both humans and agents, and a worked example. |
 
 ---
@@ -36,15 +35,12 @@ The response:
 
 ---
 
-## Local preview
-
-```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-mkdocs serve   # http://127.0.0.1:8000
-```
-
 ## Start here
 
+- Two-minute leadership version → read [docs/executive-summary.md](docs/executive-summary.md).
+- Want the whole picture on one page → read [docs/model-at-a-glance.md](docs/model-at-a-glance.md).
 - New to the model → read [docs/future-delivery-operating-model.md](docs/future-delivery-operating-model.md).
+- Reshaping the team → read [docs/team-shape-and-roles.md](docs/team-shape-and-roles.md).
+- Replacing sprints & PI planning → read [docs/governance-and-cadence.md](docs/governance-and-cadence.md).
+- Talking to leadership about budget → read [docs/funding-and-operating-budget.md](docs/funding-and-operating-budget.md).
 - Ready to change PO practice → adopt [docs/po-spec-template.md](docs/po-spec-template.md).
