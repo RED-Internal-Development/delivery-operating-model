@@ -5,6 +5,7 @@ site_description: A future operating model for product and delivery teams reshap
 
 theme:
   name: material
+  logo: assets/audi-red-logo.png
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
