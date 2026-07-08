@@ -1,87 +1,164 @@
-/* Custom styles for the Delivery Operating Model site */
+/* Custom styles for the Delivery Operating Model site — Audi RED brand */
+
+/* ---------------------------------------------------------------------------
+   Brand palette
+   ---------------------------------------------------------------------------
+   Audi RED identity = Audi Red + monochrome (black / white / gray).
+   - Audi Red         #F50537   (accent, primary highlight, constraint nodes)
+   - Audi Red (dark)  #B3001B
+   - Charcoal ramp    #4C4C4C / #333333 / #1A1A1A / #000000
+--------------------------------------------------------------------------- */
+
+/* Retheme Material's primary/accent to Audi Red in both color schemes. */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #f50537;
+  --md-primary-fg-color--light: #ff2d54;
+  --md-primary-fg-color--dark: #b3001b;
+  --md-accent-fg-color: #f50537;
+  --md-accent-fg-color--transparent: rgba(245, 5, 55, 0.1);
+}
+
+/* Links pick up the brand red. */
+[data-md-color-scheme="default"] .md-typeset a {
+  color: #d1002e;
+}
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #ff6b86;
+}
+
+/* ---------------------------------------------------------------------------
+   Mermaid — the real fix: drive Material's Mermaid CSS variables
+   ---------------------------------------------------------------------------
+   Material for MkDocs feeds these variables into Mermaid's themeVariables at
+   init. The inline `color:#fff` in a diagram's `style` directive is NOT
+   honored — node label text color comes from `--md-mermaid-node-fg-color`,
+   which by default resolves to the accent (now Audi Red) and rendered red text
+   on our dark/red node fills = unreadable. Setting the variables fixes it at
+   the source, in BOTH themes.
+
+   Every styled node uses a dark charcoal or Audi-red fill, and the default
+   node fill is charcoal below — so WHITE node text is always correct.
+--------------------------------------------------------------------------- */
+
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-mermaid-node-bg-color: #333333;   /* default node fill */
+  --md-mermaid-node-fg-color: #ffffff;   /* node text + border */
+  --md-mermaid-label-fg-color: #1a1a1a;  /* edge/flow label text */
+  --md-mermaid-label-bg-color: #ffffff;  /* edge label chip */
+  --md-mermaid-edge-color: #666666;      /* arrows */
+}
+
+[data-md-color-scheme="slate"] {
+  --md-mermaid-label-fg-color: #f2f2f2;
+  --md-mermaid-label-bg-color: #2b2b2b;
+  --md-mermaid-edge-color: #999999;
+}
 
 /* ---------------------------------------------------------------------------
    Mermaid readability
    ---------------------------------------------------------------------------
-   Our diagrams use a dark-green palette with inline `color:#fff`. Mermaid does
-   not reliably apply that inline text color to HTML node labels, so in LIGHT
-   theme the label text falls back to dark and becomes unreadable on the dark
-   green fills. These rules force correct contrast in both themes and give
-   subgraphs and edge labels a clean, readable look on a light background.
+   Material renders Mermaid node labels as SVG <text>/<tspan>, so the label
+   color is controlled by the SVG `fill` attribute — NOT the CSS `color`
+   property or the inline `color:#fff` in the diagram. Every styled node uses a
+   dark charcoal or Audi-red fill, so we force white label text via `fill`.
 --------------------------------------------------------------------------- */
 
-/* Node label text: always white — every styled node in these diagrams uses a
-   dark green or dark red fill, so white text is correct in both themes. */
+/* SVG label text on nodes: always white. */
+.mermaid .node text,
+.mermaid .node tspan,
+.mermaid text.nodeLabel,
+.mermaid .nodeLabel,
 .mermaid .node .nodeLabel,
 .mermaid .node .nodeLabel p,
 .mermaid .node span,
 .mermaid .node foreignObject div {
-  color: #fff !important;
-  fill: #fff !important;
+  fill: #ffffff !important;
+  color: #ffffff !important;
 }
 
-/* Keep node borders defined so shapes read clearly on a light page. */
+/* Node borders: a clean dark edge so shapes read on a light page. */
 .mermaid .node rect,
 .mermaid .node polygon,
 .mermaid .node path,
 .mermaid .node circle,
 .mermaid .node ellipse {
-  stroke: #1b4332 !important;
+  stroke: #000000 !important;
   stroke-width: 1.5px !important;
 }
 
 /* --- Light theme specifics --- */
 
-/* Subgraph containers: soft green tint with a defined border so groups stand
-   apart from the white page instead of washing out. */
+/* Subgraph containers: light gray tint with a defined border. */
 [data-md-color-scheme="default"] .mermaid .cluster rect {
-  fill: #eef6f0 !important;
-  stroke: #40916c !important;
+  fill: #f2f2f2 !important;
+  stroke: #4c4c4c !important;
   stroke-width: 1.5px !important;
 }
 
-/* Subgraph titles: dark green, readable on the light tint. */
-[data-md-color-scheme="default"] .mermaid .cluster .nodeLabel,
+/* Subgraph titles: near-black, readable on the light tint. */
 [data-md-color-scheme="default"] .mermaid .cluster text,
+[data-md-color-scheme="default"] .mermaid .cluster .nodeLabel,
 [data-md-color-scheme="default"] .mermaid .cluster span {
-  color: #1b4332 !important;
-  fill: #1b4332 !important;
+  fill: #1a1a1a !important;
+  color: #1a1a1a !important;
   font-weight: 600;
 }
 
-/* Edge (arrow) labels: dark text on a solid white chip so they never blend
-   into node fills or arrows. */
+/* Edge (arrow) labels: dark text on a solid white chip. */
 [data-md-color-scheme="default"] .mermaid .edgeLabel,
 [data-md-color-scheme="default"] .mermaid .edgeLabel p,
-[data-md-color-scheme="default"] .mermaid .edgeLabel span {
-  color: #1b4332 !important;
+[data-md-color-scheme="default"] .mermaid .edgeLabel span,
+[data-md-color-scheme="default"] .mermaid .edgeLabel text,
+[data-md-color-scheme="default"] .mermaid .edgeLabel tspan {
+  color: #1a1a1a !important;
+  fill: #1a1a1a !important;
   background-color: #ffffff !important;
 }
 
-/* Arrow lines: a mid-green that reads clearly on white. */
+/* Arrow lines and arrowheads: charcoal on white. */
 [data-md-color-scheme="default"] .mermaid .edgePath .path,
 [data-md-color-scheme="default"] .mermaid .flowchart-link {
-  stroke: #2d6a4f !important;
+  stroke: #333333 !important;
 }
-
 [data-md-color-scheme="default"] .mermaid marker path {
-  fill: #2d6a4f !important;
-  stroke: #2d6a4f !important;
+  fill: #333333 !important;
+  stroke: #333333 !important;
 }
 
 /* --- Dark theme specifics --- */
 
-/* Give subgraphs a subtle contrast in dark theme too. */
+/* Subgraphs: subtle contrast against the dark page. */
 [data-md-color-scheme="slate"] .mermaid .cluster rect {
-  fill: rgba(64, 145, 108, 0.12) !important;
-  stroke: #40916c !important;
+  fill: rgba(255, 255, 255, 0.06) !important;
+  stroke: #808080 !important;
   stroke-width: 1.5px !important;
 }
-
-[data-md-color-scheme="slate"] .mermaid .cluster .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .cluster text,
+[data-md-color-scheme="slate"] .mermaid .cluster .nodeLabel,
 [data-md-color-scheme="slate"] .mermaid .cluster span {
-  color: #d8f3dc !important;
-  fill: #d8f3dc !important;
+  fill: #f2f2f2 !important;
+  color: #f2f2f2 !important;
   font-weight: 600;
+}
+
+/* Node borders read better slightly lighter on a dark page. */
+[data-md-color-scheme="slate"] .mermaid .node rect,
+[data-md-color-scheme="slate"] .mermaid .node polygon,
+[data-md-color-scheme="slate"] .mermaid .node path,
+[data-md-color-scheme="slate"] .mermaid .node circle,
+[data-md-color-scheme="slate"] .mermaid .node ellipse {
+  stroke: #cccccc !important;
+}
+
+/* Edge labels on dark: light text on a dark chip. */
+[data-md-color-scheme="slate"] .mermaid .edgeLabel,
+[data-md-color-scheme="slate"] .mermaid .edgeLabel p,
+[data-md-color-scheme="slate"] .mermaid .edgeLabel span,
+[data-md-color-scheme="slate"] .mermaid .edgeLabel text,
+[data-md-color-scheme="slate"] .mermaid .edgeLabel tspan {
+  color: #f2f2f2 !important;
+  fill: #f2f2f2 !important;
+  background-color: #2b2b2b !important;
 }
