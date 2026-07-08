@@ -26,7 +26,7 @@ flowchart TB
     subgraph ENABLERS["What makes it run"]
         PLAT["Platform / agentic catalog<br/>(the multiplier)"]
         AGENTS["PO agents<br/>(discovery, spec, edge-case,<br/>consistency, readiness)"]
-        FUND["Outcome funding<br/>(rebalanced envelope)"]
+        FUND["Fund the upstream flow<br/>(keep standing teams fed)"]
     end
 
     BN --> PO
@@ -54,9 +54,9 @@ flowchart TB
 | **Requirements supply chain** | Team starvation as build speeds up | Executable specs + PO agents | [Operating Model](future-delivery-operating-model.md) |
 | **Upstream blockers cleared** | The real waits that starve a fast team | Decisions, context, clarity owned upstream | [Upstream Blockers](upstream-blockers.md) |
 | **Executable specs** | Ambiguity that stalls humans and agents | Definition of Ready | [PO Spec Template](po-spec-template.md) |
-| **Durable Outcome Teams** | Context tax of re-forming project teams | Outcome funding | [Team Shape & Roles](team-shape-and-roles.md) |
+| **Durable Outcome Teams** | Context lost when people churn across teams | Stable, per-team funding | [Team Shape & Roles](team-shape-and-roles.md) |
 | **Continuous flow** | Batch delay from sprints / PI planning | WIP limits + ready buffer | [Governance & Cadence](governance-and-cadence.md) |
-| **Outcome funding** | Spend stuck where value is not constrained | Flow metrics as evidence | [Funding & Operating Budget](funding-and-operating-budget.md) |
+| **Funding the upstream flow** | Committed capacity idling upstream | Flow metrics as evidence | [Funding & Operating Budget](funding-and-operating-budget.md) |
 | **Platform / agentic catalog** | Every team reinventing tooling | Funded as an internal product | [Team Shape & Roles](team-shape-and-roles.md#the-supporting-teams) |
 
 The system is **self-reinforcing**: better specs feed the supply chain → the supply chain keeps durable teams busy → durable teams compound context → context makes agents more effective → agents make specs cheaper to produce. Break any link and the team starves or the speed is wasted.

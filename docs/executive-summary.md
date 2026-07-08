@@ -1,79 +1,110 @@
 # Executive Summary — The One-Pager
 
-> **The artifact to walk into the room with. Read it in two minutes; decide in ten.**
+> **Read it in two minutes. It answers the question leadership keeps asking: _"What is the new model we work in, now that agentic development is here and the ecosystem is built?"_**
 
 ---
 
 ## The situation
 
-AI has compressed software **build** time dramatically. But build was only **~20–30% of end-to-end lead time**. Speeding it up while leaving the surrounding process untouched does not make value reach customers faster — it **relocates the bottleneck upstream** to requirements, decisions, and discovery.
+We have built the agentic ecosystem, and it works: teams can now design, build, and ship far faster than the old delivery process assumed. But build was only ever **~20–30% of end-to-end lead time**. Making it fast does not make value reach customers faster on its own — it **moves the constraint upstream**, to the requirements, decisions, and discovery that feed the team.
 
-> We bought speed we cannot yet use, because the constraint moved to where we are not investing.
+> The bottleneck is no longer writing the code. It is deciding _what_ to build, _clearly enough_, _fast enough_ to keep a fast team busy.
 
----
-
-## The ask (in one line)
-
-Do not fund "a new working model." **Rebalance the existing budget envelope** so the speed we already paid for actually reaches customers — and pilot it, don't reorganize.
+A faster, leaner team is now a given. The question is not whether we get smaller and more agentic — we do. The question is **what the operating model around that team has to become so the speed is real.**
 
 ---
 
-## What changes
+## The new model in one picture
 
 ```mermaid
 flowchart LR
-    A["<b>Fund projects</b><br/>assemble → deliver → disband"] --> B["<b>Fund outcomes</b><br/>durable teams, context compounds"]
-    C["<b>Manage a backlog</b><br/>PO writes tickets"] --> D["<b>Run a supply chain</b><br/>PO guarantees build-ready work"]
-    E["<b>Velocity of code</b><br/>'X% faster dev'"] --> F["<b>Lead time of value</b><br/>idea → in customer hands"]
+    OBJ["Quarterly objective<br/>lands on a standing team"] --> UP["<b>Upstream zone</b><br/>discovery → decisions →<br/>executable spec → ready buffer"]
+    UP --> BUILD["<b>Build (fast)</b><br/>engineers orchestrate agents"]
+    BUILD --> RUN["Run & learn<br/>outcome data feeds back"]
+    RUN -. "next objective" .-> OBJ
 
-    style A fill:#9b2226,color:#fff
+    UP -.->|"when starved"| STALL["Team idles on<br/>upstream blockers"]
+
+    style OBJ fill:#40916c,color:#fff
+    style UP fill:#9b2226,color:#fff
+    style BUILD fill:#2d6a4f,color:#fff
+    style RUN fill:#40916c,color:#fff
+    style STALL fill:#081c15,color:#fff
+```
+
+Teams are already **durable and topic-aligned**, fed new objectives each quarter. That part of the structure is right. What changes is that the **upstream zone becomes the job to manage** — because when build is fast and the team is lean, any gap upstream shows up immediately as idle capacity or wrong output.
+
+---
+
+## What actually changes
+
+```mermaid
+flowchart LR
+    C["<b>Manage a backlog</b><br/>PO writes tickets on demand"] --> D["<b>Run a supply chain</b><br/>PO guarantees build-ready work"]
+    E["<b>Author code</b><br/>engineer writes every line"] --> F["<b>Orchestrate & own systems</b><br/>engineer directs & reviews agents"]
+    G["<b>Batch ceremonies</b><br/>PI planning & sprints"] --> H["<b>Continuous flow</b><br/>WIP limits + ready buffer"]
+
     style C fill:#9b2226,color:#fff
     style E fill:#9b2226,color:#fff
-    style B fill:#2d6a4f,color:#fff
+    style G fill:#9b2226,color:#fff
     style D fill:#2d6a4f,color:#fff
     style F fill:#2d6a4f,color:#fff
+    style H fill:#2d6a4f,color:#fff
 ```
 
 | Dimension | From | To |
 |---|---|---|
-| Unit of funding | A project with fixed scope | A durable team against outcomes |
+| Where effort concentrates | Building the thing | Deciding and specifying the thing |
 | The PO's job | Backlog custodian | Owner of the requirements supply chain |
 | The engineer's job | Author of code | Orchestrator, reviewer, system-owner |
+| The team's shape | Larger, build-heavy | Smaller, more senior, agent-augmented |
 | The headline metric | Velocity / story points | Lead time & flow efficiency |
 | Ceremonies | Big-batch PI planning & sprints | Continuous flow with WIP limits |
 
 ---
 
-## Why it pays
+## Where the work actually gets stuck
 
-- **Flow efficiency is typically 15–25%** — meaning 75%+ of paid capacity spends its time *waiting*, mostly upstream. That is the money on the table.
-- **Freed capacity is reallocated, not cut.** Cheaper build *increases* demand for it (Jevons paradox). The story is **growth and optionality**, not layoffs.
-- **Context is the scarce asset.** Durable teams compound it; project teams re-pay the "learn the context" tax every time.
+A fast team is only as productive as the upstream supply feeding it. These are the real blockers — all on the **PO and requirements side**, not the build side:
+
+- **Decision latency** — the team can build in hours but waits days for a decision.
+- **Ambiguous, non-executable requirements** — specs a human _or an agent_ cannot act on without another meeting.
+- **Unvalidated problems** — building the wrong thing fast is still waste.
+- **Fragmented context** — the answer exists, but not where the team (or its agents) can reach it.
+- **Cross-team dependencies & approvals** — someone else's queue becomes our idle time.
+- **Objective churn & unclear priority** — priorities reshuffle faster than work completes.
+- **The PO as a single point of contention** — every clarification routes through one overloaded person.
+
+> The full catalogue — symptoms, why each bites harder now, and how to clear it — is in **[Upstream Blockers](upstream-blockers.md)**, the heart of this model.
 
 ---
 
-## What we want approved
+## What to do about it
+
+This is an operating-model change, not a reorganization and not primarily a budget exercise. Prove it where the constraint actually is:
 
 ```mermaid
 flowchart LR
-    A["Instrument<br/>2–3 value streams"] --> B["Fund 2–3 Outcome Teams<br/>as pilots (alongside SAFe)"]
-    B --> C["Review flow +<br/>lead-time data"]
-    C --> D["Scale the funding model<br/>family by family"]
+    A["Instrument 2–3<br/>standing teams' streams"] --> B["Measure the real waits<br/>(requirement-starved time)"]
+    B --> C["Move the PO's job upstream<br/>+ clear the top blockers"]
+    C --> D["Review flow &<br/>lead-time data"]
+    D --> E["Scale the model<br/>team by team"]
 
     style A fill:#40916c,color:#fff
     style B fill:#2d6a4f,color:#fff
     style C fill:#1b4332,color:#fff
-    style D fill:#081c15,color:#fff
+    style D fill:#2d6a4f,color:#fff
+    style E fill:#081c15,color:#fff
 ```
 
-A small, evidence-led pilot — **not** a reorganization. We bring back real flow-economics data on your own value streams before anything scales.
+The single most revealing number to bring back: **flow efficiency** — the share of lead time that is active work versus waiting. It is typically **15–25%**, meaning most of a team's time is spent blocked upstream. That is where the new model earns its keep.
 
 ---
 
 ## The one sentence to remember
 
-> *"You asked for a budget model. Here is the operating model that makes it make sense: move spend to where value is actually constrained, prove it on a pilot, then scale."*
+> *"The ecosystem made building fast. The new model is about keeping a fast, lean team continuously fed with validated, build-ready work — so the constraint we have to manage now lives upstream, on the requirements side."*
 
 ---
 
-*Full detail: [The Operating Model](future-delivery-operating-model.md) · [Team Shape & Roles](team-shape-and-roles.md) · [Funding & Operating Budget](funding-and-operating-budget.md) · [Governance & Cadence](governance-and-cadence.md) · [PO Spec Template](po-spec-template.md).*
+*Full detail: [The Model at a Glance](model-at-a-glance.md) · [The Operating Model](future-delivery-operating-model.md) · [Upstream Blockers](upstream-blockers.md) · [Team Shape & Roles](team-shape-and-roles.md) · [Governance & Cadence](governance-and-cadence.md) · [Funding & Operating Budget](funding-and-operating-budget.md).*
