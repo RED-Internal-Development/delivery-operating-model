@@ -13,6 +13,7 @@ The [PO deep-dive](future-delivery-operating-model.md#what-changes-for-the-produ
 - [Who Does What Across the Flow](#who-does-what-across-the-flow)
 - [The Supporting Teams](#the-supporting-teams)
 - [What This Means for Team Size](#what-this-means-for-team-size)
+- [The Minimal Team](#the-minimal-team)
 - [Anti-Patterns to Avoid](#anti-patterns-to-avoid)
 
 ---
@@ -35,19 +36,19 @@ flowchart TB
     PLAT -. "X-as-a-Service" .-> OT
     ENAB -. "Facilitating" .-> OT
 
-    style OT fill:#1b4332,color:#fff
-    style PO fill:#2d6a4f,color:#fff
-    style DS fill:#2d6a4f,color:#fff
-    style ENG fill:#2d6a4f,color:#fff
-    style EM fill:#2d6a4f,color:#fff
-    style PLAT fill:#40916c,color:#fff
-    style ENAB fill:#40916c,color:#fff
+    style OT fill:#1A1A1A,color:#fff
+    style PO fill:#333333,color:#fff
+    style DS fill:#333333,color:#fff
+    style ENG fill:#333333,color:#fff
+    style EM fill:#333333,color:#fff
+    style PLAT fill:#4C4C4C,color:#fff
+    style ENAB fill:#4C4C4C,color:#fff
 ```
 
 **Three principles hold the shape together:**
 
 1. **Durable, not project-assembled.** The team stays together across outcomes. Context — the scarce asset in an AI-fast world — accrues in a stable team and is destroyed by re-forming one per project.
-2. **Cross-functional and end-to-end.** Everything needed to take a validated problem to a running feature lives inside the team. Dependencies are designed *out*, not coordinated.
+2. **Cross-functional and end-to-end.** Everything needed to take a validated problem to a running feature lives inside the team. Dependencies are designed _out_, not coordinated.
 3. **Bounded cognitive load.** The team owns a domain slice small enough to hold in its head. The Platform team absorbs complexity so the Outcome Team stays fast.
 
 ---
@@ -55,52 +56,57 @@ flowchart TB
 ## Role-by-Role Changes
 
 ### Product Owner
+
 Covered in depth in the [operating model](future-delivery-operating-model.md#what-changes-for-the-product-owner). In one line: **from backlog custodian to owner of the requirements supply chain** — guaranteeing the team never waits on a spec or decision. ~45% discovery, ~30% specification, ~20% flow management.
 
 ### Engineer
+
 The biggest shift after the PO. From **author of code** to **orchestrator, reviewer, and system-owner**.
 
-| From | To |
-|---|---|
-| Writing most code line-by-line | Directing agents, then reviewing/curating output |
+| From                                   | To                                                   |
+| -------------------------------------- | ---------------------------------------------------- |
+| Writing most code line-by-line         | Directing agents, then reviewing/curating output     |
 | Story-sized tickets, sprint commitment | Pulling build-ready specs continuously (WIP-limited) |
-| Quality via manual authorship | Quality via review, tests-as-specs, and evals |
-| "Done" = merged | "Done" = deployed, observed, owned in production |
-| Estimation & velocity | Flow: lead time, keeping WIP low, unblocking |
+| Quality via manual authorship          | Quality via review, tests-as-specs, and evals        |
+| "Done" = merged                        | "Done" = deployed, observed, owned in production     |
+| Estimation & velocity                  | Flow: lead time, keeping WIP low, unblocking         |
 
-What becomes **more** valuable, not less: architecture, system design, reading and judging code, debugging, and knowing *what good looks like* so agent output can be trusted. (See McKinsey and Fowler — human oversight is where AI-built code succeeds or fails.)
+What becomes **more** valuable, not less: architecture, system design, reading and judging code, debugging, and knowing _what good looks like_ so agent output can be trusted. (See McKinsey and Fowler — human oversight is where AI-built code succeeds or fails.)
 
 ### Designer
+
 From **project-phase design** to **continuous discovery partner + design-system steward**.
 
-| From | To |
-|---|---|
-| Designing screens ahead of a sprint | Running discovery *with* the PO, one horizon ahead |
-| Handing off static specs | Maintaining a living design system agents build from |
-| Reviewing at sprint boundaries | Continuous validation as work flows |
+| From                                | To                                                   |
+| ----------------------------------- | ---------------------------------------------------- |
+| Designing screens ahead of a sprint | Running discovery _with_ the PO, one horizon ahead   |
+| Handing off static specs            | Maintaining a living design system agents build from |
+| Reviewing at sprint boundaries      | Continuous validation as work flows                  |
 
 The design system becomes an **agent-consumable asset** — the same tokens/components that brief a human also ground the build agents (one artifact, two consumers, mirroring the spec principle).
 
 ### Delivery Lead / Engineering Manager
+
 From **managing status and capacity** to **managing flow and health**.
 
-| From | To |
-|---|---|
-| Running sprint ceremonies, tracking velocity | Managing WIP limits, lead time, buffer health |
-| Assigning work | Removing blockers so the team pulls freely |
-| Reporting "% committed complete" | Reporting flow efficiency & requirement-starved time |
-| Capacity planning per PI | Protecting durable-team stability & cognitive load |
+| From                                         | To                                                   |
+| -------------------------------------------- | ---------------------------------------------------- |
+| Running sprint ceremonies, tracking velocity | Managing WIP limits, lead time, buffer health        |
+| Assigning work                               | Removing blockers so the team pulls freely           |
+| Reporting "% committed complete"             | Reporting flow efficiency & requirement-starved time |
+| Capacity planning per PI                     | Protecting durable-team stability & cognitive load   |
 
 The EM becomes the guardian of the **flow system** itself — the person who notices the ready buffer running low or WIP creeping up, and acts before the team stalls.
 
 ### QA / Quality
+
 From **a test phase** to **quality-as-specification, embedded and continuous**.
 
-| From | To |
-|---|---|
-| Testing after build, in a phase | Acceptance criteria written as **evals** up front |
-| Manual regression at release | Continuous automated checks; QA designs the eval suite |
-| Gatekeeper at the end | Quality-coach embedded in the flow |
+| From                            | To                                                     |
+| ------------------------------- | ------------------------------------------------------ |
+| Testing after build, in a phase | Acceptance criteria written as **evals** up front      |
+| Manual regression at release    | Continuous automated checks; QA designs the eval suite |
+| Gatekeeper at the end           | Quality-coach embedded in the flow                     |
 
 QA's expertise moves **upstream** into the spec (Section 3 acceptance criteria / evals) and into the automated gates that let continuous delivery stay safe.
 
@@ -126,26 +132,26 @@ flowchart LR
     EM["Delivery Lead: protects flow across the whole line"] -.-> D
     EM -.-> B
 
-    style d1 fill:#40916c,color:#fff
-    style s1 fill:#2d6a4f,color:#fff
-    style RB fill:#1b4332,color:#fff
-    style b1 fill:#2d6a4f,color:#fff
-    style r1 fill:#40916c,color:#fff
-    style EM fill:#081c15,color:#fff
+    style d1 fill:#4C4C4C,color:#fff
+    style s1 fill:#333333,color:#fff
+    style RB fill:#1A1A1A,color:#fff
+    style b1 fill:#333333,color:#fff
+    style r1 fill:#4C4C4C,color:#fff
+    style EM fill:#000000,color:#fff
 ```
 
-The center of gravity shifts **left**: more of the team's collective effort sits in discovery and specification, because that is now the constraint. Build and run are fast — the team's job is to keep them *fed* and *safe*.
+The center of gravity shifts **left**: more of the team's collective effort sits in discovery and specification, because that is now the constraint. Build and run are fast — the team's job is to keep them _fed_ and _safe_.
 
 ---
 
 ## The Supporting Teams
 
-Two team types exist *around* the Outcome Teams (Team Topologies):
+Two team types exist _around_ the Outcome Teams (Team Topologies):
 
-| Team | Interaction | Purpose |
-|---|---|---|
+| Team              | Interaction    | Purpose                                                                                                                                                                                       |
+| ----------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Platform Team** | X-as-a-Service | Owns the **agentic catalog as an internal product** (a Thinnest Viable Platform). Keeps Outcome Teams fast without adding dependencies. This is where your existing catalog investment lives. |
-| **Enabling Team** | Facilitating | Temporarily coaches Outcome Teams into the new practice (flow, spec quality, agent use), then moves on. Drives the pilot-to-scale transition. |
+| **Enabling Team** | Facilitating   | Temporarily coaches Outcome Teams into the new practice (flow, spec quality, agent use), then moves on. Drives the pilot-to-scale transition.                                                 |
 
 > The Platform team is the constant multiplier. Every improvement to the catalog compounds across every Outcome Team simultaneously — the highest-leverage investment in the model.
 
@@ -159,14 +165,76 @@ Two team types exist *around* the Outcome Teams (Team Topologies):
 
 ---
 
+## The Minimal Team
+
+> **The direction of travel is a very small Outcome Team — a Product Owner and one or two engineers — owning a domain slice end-to-end.**
+
+The five-role team above describes the _functions_ that must be covered, not five headcounts. As the model matures, the trend is to compress the team to a **PO + 1–2 engineers**. This is an organisational restructuring question, not a tooling one: the functions of Designer, Delivery Lead, and QA do not disappear — they are **relocated**. Where they go is the whole design decision.
+
+### The three places a function can live
+
+Every responsibility on the original team lands in one of three places. Naming which one — explicitly, per function — is how you avoid a small team that is quietly missing a capability.
+
+| Destination                | What it means                                                                                              | Organisational implication                                                    |
+| -------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Absorbed by agents**     | The work becomes an [agent-assisted](future-delivery-operating-model.md#how-the-po-uses-agents-and-ai) activity the remaining humans direct and review. | Reduces headcount need, **increases** the review burden on the humans left.   |
+| **Absorbed by the platform** | The work becomes a self-serve service the small team _consumes_ rather than staffs.                     | Moves the cost to the Platform team, which must grow to carry it.             |
+| **Absorbed by the humans**  | The work is retained but done by the PO or engineers as part of a broader remit.                         | Widens each person's role — the reason the team must be **more senior**.       |
+
+### Where each role goes
+
+```mermaid
+flowchart TB
+    subgraph MT["Minimal Outcome Team"]
+        PO["Product Owner<br/><i>requirements + outcome ownership</i>"]
+        ENG["1–2 Engineers + Agents<br/><i>build, review, run</i>"]
+    end
+    PLAT["Platform Team<br/><i>design system, agentic catalog,<br/>flow tooling — all self-serve</i>"]
+
+    DES["Designer function"] -.-> PLAT
+    QA["QA function"] -.-> ENG
+    DL["Delivery Lead function"] -.-> PLAT
+
+    PLAT == "X-as-a-Service" ==> MT
+
+    style MT fill:#1A1A1A,color:#fff
+    style PO fill:#333333,color:#fff
+    style ENG fill:#333333,color:#fff
+    style PLAT fill:#F50537,color:#fff
+    style DES fill:#4C4C4C,color:#fff
+    style QA fill:#4C4C4C,color:#fff
+    style DL fill:#4C4C4C,color:#fff
+```
+
+| Original role         | Primary destination      | How it is covered on a PO + 1–2 team                                                                                                                  |
+| --------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Designer**          | Platform + agents        | A shared design system, maintained by the Platform team, becomes the self-serve source of UI. Discovery-level design judgement is retained by the PO; bespoke design work is a Platform or Enabling-team service pulled in when needed, not a standing seat. |
+| **Delivery Lead / EM** | Platform + humans        | The [cadence and WIP rules](governance-and-cadence.md) become _self-serve mechanics_ (buffer-health signals, WIP limits) rather than a coordinating person. Line-management and flow-health ownership move up to a lead who spans several minimal teams. |
+| **QA / Quality**      | Agents + humans          | Acceptance criteria as evals (already the model) move quality into the spec and the automated gates. The engineers own the eval suite; there is no separate test phase or gatekeeper. |
+| **Product Owner**     | Retained (widened)       | Still owns the requirements supply chain — now the _single_ product-side seat, so PO leverage via agents is not optional.                             |
+| **Engineer**          | Retained (widened)       | Orchestrates agents across build **and** run, owns the eval suite, and absorbs the lightweight operational duties a larger team would have split up.  |
+
+### The load-bearing precondition
+
+A PO + 1–2 team is only viable when the work it sheds is genuinely carried elsewhere. **The smaller the team, the heavier the platform.** Shrinking the team without first standing up the design system, the agentic catalog, and self-serve flow mechanics does not create a lean team — it creates an understaffed one.
+
+Two failure modes to watch, both organisational:
+
+1. **The PO becomes the single point of contention.** With only one product-side seat, every ambiguous requirement routes through one person. This is [blocker #7](upstream-blockers.md) made structural — it is survivable _only_ if the PO's work is genuinely agent-leveraged, not hand-cranked.
+2. **A hollow team with a thin platform.** If design, quality tooling, and flow support have not actually moved to the Platform team, the minimal team silently reabsorbs them and stalls. Verify each function has a real home before removing the seat.
+
+> **The honest framing for leadership:** a three-person team is an _outcome_ of the platform being strong enough to carry design, quality, and flow as services — not a starting condition you can mandate on day one. Build the platform, prove the flow, then let the team shrink to fit.
+
+---
+
 ## Anti-Patterns to Avoid
 
 - **The AI-assisted feature factory.** Speeding up build while keeping hand-offs, project teams, and big-batch planning — you just hit the upstream wall faster.
 - **Reforming teams per project.** Destroys the accumulated context that makes an AI-fast team effective.
 - **The PO as sole bottleneck.** If the PO must hand-write every spec, the team starves. The [PO agents](future-delivery-operating-model.md#how-the-po-uses-agents-and-ai) exist precisely to prevent this.
 - **Measuring engineers on output.** Lines, story points, or commit counts push exactly the wrong behaviour when agents generate the volume. Measure flow and outcomes.
-- **A bloated platform.** The catalog must stay a *thin* enabling product, not a mandatory gate that slows teams down.
+- **A bloated platform.** The catalog must stay a _thin_ enabling product, not a mandatory gate that slows teams down.
 
 ---
 
-*See also: [The Operating Model](future-delivery-operating-model.md) · [Funding & Operating Budget](funding-and-operating-budget.md) · [PO Spec Template](po-spec-template.md).*
+_See also: [The Operating Model](future-delivery-operating-model.md) · [Funding & Operating Budget](funding-and-operating-budget.md) · [PO Spec Template](po-spec-template.md)._
